@@ -11,6 +11,7 @@ module.exports = class Shop {
 
       switch (name) {
         case "Aged Brie":
+          if (sellIn <= 0) quality += 1;
           quality += 1;
           break;
         default:
