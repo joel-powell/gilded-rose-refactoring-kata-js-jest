@@ -121,4 +121,29 @@ describe("Gilded Rose", () => {
       expect(items[0].quality).toBe(0);
     });
   });
+
+  describe("Conjured Mana Cake", () => {
+    it("should lose 2 quality per day before sell by", () => {
+      const items = [new Item("Conjured Mana Cake", 3, 6)];
+      const gildedRose = new Shop(items);
+      Array.from({ length: 2 }).forEach(() => gildedRose.updateQuality());
+      expect(items[0].quality).toBe(2);
+    });
+
+    it("should not go into negative quality", () => {
+      const items = [new Item("Conjured Mana Cake", 3, 6)];
+      const gildedRose = new Shop(items);
+      Array.from({ length: 30 }).forEach(() => gildedRose.updateQuality());
+      expect(items[0].quality).toBe(0);
+      expect(items[0].sellIn).toBe(-27);
+    });
+
+    it("should lose quality twice as fast when beyond sell by date", () => {
+      const items = [new Item("Conjured Mana Cake", 3, 20)];
+      const gildedRose = new Shop(items);
+      Array.from({ length: 5 }).forEach(() => gildedRose.updateQuality());
+      expect(items[0].quality).toBe(6);
+      expect(items[0].sellIn).toBe(-2);
+    });
+  });
 });

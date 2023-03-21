@@ -12,8 +12,8 @@ module.exports = class Shop {
         case "Sulfuras, Hand of Ragnaros":
           return;
         case "Aged Brie":
-          if (sellIn <= 0) quality += 1;
           quality += 1;
+          if (sellIn <= 0) quality += 1;
           break;
         case "Backstage passes to a TAFKAL80ETC concert":
           quality += 1;
@@ -21,14 +21,16 @@ module.exports = class Shop {
           if (sellIn <= 5) quality += 1;
           if (sellIn < 0) quality = 0;
           break;
+        case "Conjured Mana Cake":
+          quality -= 2;
+          break;
         default:
-          if (sellIn <= 0) quality -= 1;
           quality -= 1;
+          if (sellIn <= 0) quality -= 1;
       }
 
       if (quality < 0) quality = 0;
       if (quality > 50) quality = 50;
-
       sellIn -= 1;
 
       this.items[index] = { name, sellIn, quality };
