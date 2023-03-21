@@ -18,6 +18,7 @@ module.exports = class Shop {
         case "Backstage passes to a TAFKAL80ETC concert":
           quality += 1;
           if (sellIn <= 10) quality += 1;
+          if (sellIn <= 5) quality += 1;
           break;
         default:
           if (sellIn <= 0) quality -= 1;
