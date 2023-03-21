@@ -6,13 +6,17 @@ module.exports = class Shop {
   updateQuality() {
     this.items.forEach((item, index) => {
       const { name } = item;
-      if (name === "Sulfuras, Hand of Ragnaros") return;
       let { sellIn, quality } = item;
 
       switch (name) {
+        case "Sulfuras, Hand of Ragnaros":
+          return;
         case "Aged Brie":
           if (sellIn <= 0) quality += 1;
           quality += 1;
+          break;
+        case "Backstage passes to a TAFKAL80ETC concert":
+          if (sellIn > 10) quality += 1;
           break;
         default:
           if (sellIn <= 0) quality -= 1;
