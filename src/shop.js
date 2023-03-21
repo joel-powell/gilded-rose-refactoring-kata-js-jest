@@ -30,8 +30,7 @@ module.exports = class Shop {
           if (sellIn <= 0) quality -= 1;
       }
 
-      if (quality < 0) quality = 0;
-      if (quality > 50) quality = 50;
+      quality = Math.min(Math.max(quality, 0), 50);
       sellIn -= 1;
 
       this.items[index] = { name, sellIn, quality };
