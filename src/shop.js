@@ -19,6 +19,7 @@ module.exports = class Shop {
           quality += 1;
           if (sellIn <= 10) quality += 1;
           if (sellIn <= 5) quality += 1;
+          if (sellIn < 0) quality = 0;
           break;
         default:
           if (sellIn <= 0) quality -= 1;
