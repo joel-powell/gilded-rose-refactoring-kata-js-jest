@@ -6,6 +6,9 @@ module.exports = class Shop {
   updateQuality() {
     this.items.forEach((item, index) => {
       const { name } = item;
+
+      if (name === "Sulfuras, Hand of Ragnaros") return;
+
       let { sellIn, quality } = item;
 
       if (sellIn <= 0) quality -= 1;
