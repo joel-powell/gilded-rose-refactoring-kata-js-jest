@@ -14,6 +14,7 @@ describe("Gilded Rose", () => {
       const gildedRose = new Shop(items);
       Array.from({ length: 10 }).forEach(() => gildedRose.updateQuality());
       expect(items[0].quality).toBe(10);
+      expect(items[0].sellIn).toBe(0);
     });
 
     it("should not go into negative quality", () => {
@@ -21,6 +22,7 @@ describe("Gilded Rose", () => {
       const gildedRose = new Shop(items);
       Array.from({ length: 30 }).forEach(() => gildedRose.updateQuality());
       expect(items[0].quality).toBe(0);
+      expect(items[0].sellIn).toBe(-20);
     });
 
     it("should lose quality twice as fast when beyond sell by date", () => {
@@ -28,6 +30,7 @@ describe("Gilded Rose", () => {
       const gildedRose = new Shop(items);
       Array.from({ length: 12 }).forEach(() => gildedRose.updateQuality());
       expect(items[0].quality).toBe(6);
+      expect(items[0].sellIn).toBe(-2);
     });
   });
 
