@@ -23,6 +23,7 @@ module.exports = class Shop {
           break;
         case "Conjured Mana Cake":
           quality -= 2;
+          if (sellIn <= 0) quality -= 2;
           break;
         default:
           quality -= 1;
