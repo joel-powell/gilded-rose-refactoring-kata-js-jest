@@ -8,6 +8,14 @@ describe("Gilded Rose", () => {
     expect(items[0].name).toBe("foo");
   });
 
+  describe("initially", () => {
+    it("should return an empty array", () => {
+      const gildedRose = new Shop();
+      const items = gildedRose.updateQuality();
+      expect(items).toEqual([]);
+    });
+  });
+
   describe("+5 Dexterity Vest", () => {
     it("should lose 1 quality per day before sell by", () => {
       const items = [new Item("+5 Dexterity Vest", 10, 20)];
