@@ -8,6 +8,8 @@ module.exports = class Shop {
       const { name } = item;
       let { sellIn, quality } = item;
 
+      if (sellIn <= 0) quality -= 1;
+
       quality -= 1;
 
       if (quality < 0) quality = 0;
